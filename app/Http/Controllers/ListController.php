@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Log;
 use App\Model\ToDoList;
 use Illuminate\Http\Request;
 
@@ -36,9 +37,9 @@ class ListController extends Controller
     public function update($id, Request $request)
     {
         $author = ToDoList::findOrFail($id);
-        $author->update($request->all());
+        $author->update($request->json()->all());
 
-        return response()->json($author, 200);
+        return response()->json($request->all(), 200);
     }
 
     public function delete($id)
