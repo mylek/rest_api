@@ -39,7 +39,7 @@ class ListController extends Controller
         $author = ToDoList::findOrFail($id);
         $author->update($request->json()->all());
 
-        return response()->json($request->all(), 200);
+        return response()->json($author, 200);
     }
 
     public function delete($id)
